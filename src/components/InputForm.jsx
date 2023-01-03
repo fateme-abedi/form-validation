@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { usePasswordValidation } from '../hooks/PasswordValidation'
+import Input from './Input'
 
 function InputForm(props) {
   const [form, setForm] = useState({
@@ -83,32 +84,28 @@ function InputForm(props) {
         onSubmit={formSubmitHandler}
         className="flex flex-col items-center border-2 w-[30%] px-4 py-8 border-gray-700 justify-evenly"
       >
-        <input
+        <Input
           type="text"
-          placeholder="Enter your name:"
+          placeholder="Enter your name"
           onChange={onChange}
           name="name"
           value={name}
-          className="px-4 py-2 mb-2 text-lg w-[100%] text-white bg-slate-900 rounded-xl"
-          required
         />
-        <input
+
+        <Input
           type="text"
-          className="px-4 py-2 mb-2 text-lg w-[100%] text-white bg-slate-900 rounded-xl"
-          placeholder="Enter your lasName:"
-          onChange={onChange}
           name="lastName"
+          placeholder="Enter your lasName"
           value={lastName}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Enter your Email:"
           onChange={onChange}
-          name="email"
+        />
+
+        <Input
+          type="email"
+          placeholder="Enter your Email"
+          onChange={onChange}
           value={email}
-          className="px-4 py-2 w-[100%] mb-2 text-lg text-white bg-slate-900 rounded-xl"
-          required
+          name="email"
         />
         {error && email ? <h6 className="text-[#FF0000]">{error}</h6> : null}
         <select
@@ -124,7 +121,8 @@ function InputForm(props) {
           <option value="female">female</option>
           <option value="male">male</option>
         </select>
-        <input
+
+        {/* <input
           type="text"
           placeholder="Enter your password:"
           onChange={onChange}
@@ -132,6 +130,13 @@ function InputForm(props) {
           value={password}
           className="px-4 py-2 mb-2 text-lg w-[100%] text-white bg-slate-900 rounded-xl"
           required
+        /> */}
+        <Input
+          type="password"
+          placeholder="Enter your password"
+          onChange={onChange}
+          name="password"
+          value={password}
         />
         {!validLength && password ? (
           <h6 className="text-[#FF0000]">atleast 8 characters</h6>
@@ -157,14 +162,13 @@ function InputForm(props) {
             !@#$%^&*()_+\-=\
           </h6>
         ) : null}
-        <input
-          type="text"
-          placeholder="Enter your password again:"
+
+        <Input
+          type="password"
+          placeholder="Enter your password again"
           onChange={onChange}
           name="confirmpassword"
           value={confirmpassword}
-          className="px-4 py-2 mb-2 text-lg w-[100%] text-white bg-slate-900 rounded-xl"
-          required
         />
         {!match && password && confirmpassword ? (
           <h6 className="text-[#FF0000]">not match with password</h6>
